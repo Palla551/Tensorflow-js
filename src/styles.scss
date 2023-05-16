@@ -1,1 +1,49 @@
 /* You can add global styles to this file, and also import other style files */
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+
+
+video {
+    width: 384px;
+    height: 216px;
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 1030px) {
+    video {
+        width: 512px;
+        height: 288px;
+    }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 1280px) {
+    video {
+        width: 640px;
+        height: 360px;
+    }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 1560px) {
+    video {
+        width: 768px;
+        height: 432px;
+    }
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1820px) {
+    video {
+        width: 896px;
+        height: 504px;
+    }
+}
