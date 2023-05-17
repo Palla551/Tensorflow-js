@@ -20,7 +20,7 @@
         position: absolute;
         bottom: 2rem;
         left: 50%;
-        transform: translate(-50%, 0);  
+        transform: translate(-50%, 0);
 
         background-color: #424242;
         border-radius: .2rem;
@@ -31,6 +31,18 @@
 
 .spacer {
     flex: 1 1 auto;
+}
+
+.result {
+    position: relative;
+}
+
+.canvas {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
 }
 
 /* Small devices (portrait tablets and large phones, 600px and up) */

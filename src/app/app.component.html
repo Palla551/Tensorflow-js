@@ -13,16 +13,25 @@
 
   <div class="content">
     <div class="videos">
-      <video #video autoplay [srcObject]="webCam"></video>
-      <video #video autoplay [srcObject]="webCam"></video>
+      <video #video autoplay class="video" [srcObject]="webCam"></video>
+      <div class="result">
+        <video autoplay class="video" [srcObject]="webCam"></video>
+        <canvas #canvas class="video canvas"></canvas>
+      </div>
     </div>
 
     <div class="controls">
-      <button mat-icon-button (click)="start()" matTooltip="Start Detection">
+      <button mat-icon-button (click)="start()" matTooltip="Start Camera">
         <mat-icon>play_arrow</mat-icon>
       </button>
-      <button mat-icon-button (click)="stop()" matTooltip="Stop Detection">
+      <button mat-icon-button (click)="stop()" matTooltip="Stop Camera">
         <mat-icon>pause</mat-icon>
+      </button>
+      <button mat-icon-button (click)="predictWithCocoModel()" matTooltip="Stop Detection" [disabled]="!webCam">
+        <mat-icon>check</mat-icon>
+      </button>
+      <button mat-icon-button (click)="stopPrediction()" matTooltip="Stop Detection" [disabled]="!webCam">
+        <mat-icon>close</mat-icon>
       </button>
     </div>
   </div>
