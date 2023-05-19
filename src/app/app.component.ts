@@ -25,9 +25,11 @@ export class AppComponent {
 
   public async start(): Promise<void> {
     const constraints = {
-      audio: false, video: {
+      audio: false,
+      video: {
         width: { min: 1024, ideal: 1920, max: 1920 },
         height: { min: 576, ideal: 1080, max: 1080 },
+        //facingMode: 'environment'
       },
     };
 
@@ -37,9 +39,8 @@ export class AppComponent {
       const settings = this.webCam?.getVideoTracks()[0]?.getSettings();
       this.webCamWidth = settings.width || 1;
       this.webCamHeight = settings.height || 1;
-
     } catch (e) {
-      console.error('Error accessing the webcam', e);
+      alert(e)
     }
   }
 
@@ -57,9 +58,14 @@ export class AppComponent {
   public async predictWithCocoModel() {
     if (this.predict) return;
 
-    this.predict = true;
-    const model = await cocoSSD.load({ base: 'lite_mobilenet_v2' });
-    this.detectFrame(this.video?.nativeElement, model);
+    try {
+
+      this.predict = true;
+      const model = await cocoSSD.load({ base: 'lite_mobilenet_v2' });
+      this.detectFrame(this.video?.nativeElement, model);
+    } catch (e) {
+      alert(e);
+    }
   }
 
   public stopPrediction(): void {
@@ -99,7 +105,6 @@ export class AppComponent {
       const width = ratioWidth * prediction.bbox[2];
       const height = ratioHeight * prediction.bbox[3];
 
-      console.log(ctx.width, prediction.bbox[0], width, height)
       // Draw the bounding box.
       ctx.strokeStyle = "#00FFFF";
       ctx.lineWidth = 2;
